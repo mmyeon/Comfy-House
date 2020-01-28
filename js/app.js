@@ -66,7 +66,8 @@ class UI {
     // console.log(buttons);
     buttons.forEach(button => {
       let id = button.dataset.id;
-      console.log(id);
+      // console.log(id);
+      let inCart = cart.find(item => item.id === id);
     });
   }
 }

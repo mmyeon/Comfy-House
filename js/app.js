@@ -61,6 +61,14 @@ class UI {
     });
     productsDOM.innerHTML = result;
   }
+  getBagButtons() {
+    const buttons = [...document.querySelectorAll(".bag-btn")];
+    // console.log(buttons);
+    buttons.forEach(button => {
+      let id = button.dataset.id;
+      console.log(id);
+    });
+  }
 }
 
 // local storage
@@ -76,8 +84,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // get all products
   // products.getProducts().then(products => console.log(products));
-  products.getProducts().then(products => {
-    ui.displayProducts(products);
-    Storage.saveProducts(products);
-  });
+  products
+    .getProducts()
+    .then(products => {
+      ui.displayProducts(products);
+      Storage.saveProducts(products);
+    })
+    .then(() => {
+      ui.getBagButtons();
+    });
 });
